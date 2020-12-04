@@ -67,10 +67,33 @@
 - nb005
     - string特徴量を見てみた
     - 特徴量名: `feat_string = ['Platform', 'Genre', 'Publisher', 'Developer', 'Rating']`
+    - 以下testで見てる
     - nunique
-
-    <img src='./../data/info/readme/001.png' width='400'>
+        - 全体の数が8000程度なのでName以外そのまま使って良さそう
+    
+        <img src='./data/info/readme/001.png' width='150'>
 
     - value_counts
+        - この程度なら、そのままカテゴリカルにしてしまおう
 
-    <img src='./../data/info/readme/002.png' width='400'>
+        <img src='./data/info/readme/002.png' width='250'>
+
+
+- nb006
+    - nb005のカテゴリカルな特徴量入れた
+    - result
+        - cv: 1.19139
+        - sub: 1.4141
+
+- nb007
+    - nb006の改良
+    - train_test_splitからkfoldにする
+    - result
+        - cv: 1.14436
+        - sub: 1.3746
+
+- nb008
+    - nb007をリファクタリング
+
+- nb009
+    - nb008のlightGBMのハイパラチューニング
