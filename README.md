@@ -1,2 +1,2 @@
-# atma-08-coffee
+# atma-08-game
 atmacup #8 のリポジトリ
