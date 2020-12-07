@@ -136,3 +136,33 @@
         - sub:0.9522   <--- publisher とか外したからめっちゃまともになった。
 
 
+- nb013
+    - nb012のリファクタリング
+    - noglobal デコレータの導入
+    - configでハイパラ管理
+
+
+- nb014
+    - optuna
+    - ハイパラチューンングした。
+    - best_params = {
+        'max_depth': 131, 'subsample': 0.6, 'colsample_bytree': 0.9, 
+        'learning_rate': 0.022862256818781214, 'reg_alpha': 1.0,
+        'reg_lambda': 6.0, 'min_child_samples': 10
+        }
+
+- nb015
+    - nb012と比較
+    - nb014でチューニングしたハイパラを使用
+    - result
+        - cv: 1.00127
+        - sub:0.9494
+
+- nb016
+    - hoge
+
+- nb017
+    - hoge
+    - result
+        - cv: 0.97241
+        - sub: 0.9404
