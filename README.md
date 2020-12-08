@@ -5,12 +5,25 @@
 - コンペ期間
     - 2020/12/04 18:00 ~ 2020/12/13 18:00 (Asia/Tokyo)
 
-- Data
+
+
+## Features
+- 自分で作成した特徴量
+
+|No.|Features name|Detail|n_feat|columns|
+|---|---|---|---|---|
+|nb016|feature_has_name|ワードがName内にあればTrue, なければFalseの特徴量を作成。|21|Name_has_super, Name_has_world, Name_has_star, ...|
+|nb018|feature_basic01|Basicな特徴量。カテゴリカルな特徴量は、dtype='object'にしている。|8|Platform	Year_of_Release	Genre	Critic_Score	Critic_Count	User_Score	User_Count	Rating|
+
+
+## Dataset
+
+
+
+- shape
     - train.shape = (8359, 16)
     - test.shape = (8360, 11)
 
-
-## Feture
 |カラム名|	説明	|例|
 |---|---|---|
 |Name|	ソフトの名前	|Aquaman: Battle for Atlantis|
@@ -136,3 +149,67 @@
         - sub:0.9522   <--- publisher とか外したからめっちゃまともになった。
 
 
+- nb013
+    - nb012のリファクタリング
+    - noglobal デコレータの導入
+    - configでハイパラ管理
+
+
+- nb014
+    - optuna
+    - ハイパラチューンングした。
+    - best_params = {
+        'max_depth': 131, 'subsample': 0.6, 'colsample_bytree': 0.9, 
+        'learning_rate': 0.022862256818781214, 'reg_alpha': 1.0,
+        'reg_lambda': 6.0, 'min_child_samples': 10
+        }
+
+- nb015
+    - nb012と比較
+    - nb014でチューニングしたハイパラを使用
+    - result
+        - cv: 1.00127
+        - sub:0.9494
+
+- nb016
+    - Name特徴量から情報を抽出して特徴量としたい
+    - name_has 特徴量を作成
+    - `super` などのワードが何回出てくるかを計算して、集計。
+    - the などは除いた中で使えそうなワードを抽出。
+    - 例
+        - `super`, `mario`
+    - ワードがName内にあればTrue, なければFalseの特徴量を作成。
+    - 21次元
+    - ためしたこと
+        - 1つだけいれて実験
+        - そのなかで良かったやつだけ使って実験
+        - 全て入れて実験
+    - 結果
+        - 全部いれたほうがよかった。
+        - base_cv: 1.00127
+        - new_cv: 0.97241
+
+- nb017
+    - nb016で作成した `name_has` 特徴量を使用してサブしてみる
+    - result
+        - cv: 0.97241
+        - sub: 0.9404 <--- Best!!!
+
+
+### 20201208
+- nb018
+    - 特徴量を作る
+    - 特徴量をロードする駆動にしたいのでベースの特徴量を保存する
+    - 特徴量名
+        - feature_base01
+    - 01としてる理由は、今後変わる可能性を考えてのこと
+    - カラム数:  8
+    - columns: 
+        - Platform
+        - Year_of_Release	
+        - Genre
+        - Critic_Score	
+        - Critic_Count	
+        - User_Score	
+        - User_Count	
+        - Rating
