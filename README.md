@@ -215,3 +215,32 @@
         - Rating
 
 ### 20201209
+- nb019
+    - nb018を改良する
+    - feature importanceを実装する
+    - 特徴量ロード駆動にする
+
+- nb020
+    - Developerからワードを抜き出して論理特徴量を作ろうとした。
+        - 例えば、'Nintendo'の有無とか。
+    - しかし、以下の図を見てもわかるように、Developerはかなり分離しているので簡単には使えそうにない。
+
+        <img src='./data/info/readme/003.png' width='700'>
+
+    - 確認したところ、`Nintendo` はtrainにはあるが、testにはなかった。
+    - これらのことから、`trainとtestに共通したword` の出現数を見ることにした。
+
+        <img src='./data/info/readme/004.png' width='200'>
+    
+    - 見ての通り全然使えない。。。
+
+
+### 20201210
+- nb021
+    - nb016で作った `name_has` 特徴量を改良してみる。
+    - nb016では、trainのみのデータを見ていたがtestも見てみる。
+    - marioは本当にtestにも入っているの？とか。
+    - 全然だめ。使えない。
+    - 次に繋げられそうなアイデア
+        - name_has は微妙だけど、2010とか2008をカテゴリカルにするとよさそう(name_age)てきな
+        - あと、1,2,3もいいな(name_ver)
