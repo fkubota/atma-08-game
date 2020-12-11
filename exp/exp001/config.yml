@@ -1,0 +1,32 @@
+globals:
+  seed: 2020
+  show_log: True
+
+feature:
+  add_feats: ['feature_basic01', 'feature_name_has']
+
+split:
+  name: KFold
+  params:
+    n_splits: 5
+    random_state: 2020
+    shuffle: True
+
+model:
+    model_params:
+        objective: 'regression'
+        metric: 'rmse'
+        importance_type: 'gain'
+        n_estimators: 800
+        max_depth: 131
+        subsample: 0.6
+        colsample_bytree: 0.9
+        learning_rate: 0.022862256818781214
+        reg_alpha: 1.0
+        reg_lambda: 6.0
+        min_child_samples: 10
+    
+    train_params:
+        categorical_feature: ['Platform', 'Genre', 'Rating']
+        verbose: 30
+        early_stopping_rounds: 100
