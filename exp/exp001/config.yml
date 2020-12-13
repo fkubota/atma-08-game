@@ -1,6 +1,10 @@
 globals:
+  debug: True
   seed: 2020
   show_log: True
+  path_train: '../../data/official/train.csv'
+  path_test: '../../data/official/test.csv'
+  path_sample_submission: '../../data/official/atmaCup8_sample-submission.csv'
   dir_save: '../../data/output_exp/'
 
 feature:
