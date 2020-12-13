@@ -4,7 +4,7 @@ globals:
   dir_save: '../../data/output_exp/'
 
 feature:
-  add_feats: ['feature_basic01', 'feature_name_has']
+  add_feats: ['feature_basic01']
 
 split:
   name: KFold
