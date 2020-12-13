@@ -1,6 +1,7 @@
 globals:
   seed: 2020
   show_log: True
+  dir_save: '../../data/output_exp/'
 
 feature:
   add_feats: ['feature_basic01', 'feature_name_has']

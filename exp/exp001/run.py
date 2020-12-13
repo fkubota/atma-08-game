@@ -1,4 +1,6 @@
 import yaml
+import glob
+from lib import util
 from loguru import logger
 
 
@@ -8,6 +10,8 @@ def main():
         config = yaml.load(yml)
 
     logger.info('=== start ===')
+    logger.info(f'{config["globals"]["dir_save"]}*')
+
 
 
 if __name__ == "__main__":
